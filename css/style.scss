@@ -1,0 +1,156 @@
+@import "compass";
+@import url('https://fonts.googleapis.com/css2?family=Cantata+One&family=Noto+Serif+JP:wght@500&display=swap');
+
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #382D1E;
+$subColor: #A78164;
+$keyColor: #BEBBB0;
+$fontColor: #BEBBB0;
+
+/* Base
+------------------------------------------------------------*/
+html{ font-size: 62.5%; }
+
+body{
+    color: $fontColor;
+    font-size: 1.4rem;
+    font-family:$baseFontFamily;
+    line-height:1.6;
+    letter-spacing: 0.1em; 
+    background-color: $baseColor;
+}
+
+a {
+    /* link, visit, hover, active */
+  @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.cantata {
+  font-family: 'Cantata One', serif;
+}
+.noto {
+    font-family: 'Noto Serif JP', serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Header
+------------------------------------------------------------*/
+header {
+     height: 250px;
+     width: 100%;
+     background-image: url(../images/main.jpg);
+     background-size: cover;
+     background-position: center center;
+}
+
+/* main
+------------------------------------------------------------*/
+main{
+    padding: 20px 0;
+    h2 {
+        font-size: 2.8rem;
+    }
+    .main-boxes{
+        margin: 20px;
+        
+        @include display-flex;
+        justify-content: space-between;
+        @include flex-direction(column); /*縦並び*/
+        
+        
+        .main-box {
+            @include flex(1);    /* 3つの幅が1:1:1で並ぶ */
+            margin: 10px 0; 
+            padding: 20px;
+            background-color: $subColor;
+            color: $baseColor;
+            @include box-sizing(border-box);
+            
+            border: solid 3px $keyColor;
+            
+            h3 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+                 font-weight: bold;
+            }
+        }
+    }
+
+}
+
+/* footer
+------------------------------------------------------------*/
+footer {
+    
+    .button-roundedRectangle{
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        background-color: $keyColor; 
+        color: $baseColor;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        
+        span {
+            display:block;
+            height: 20px;
+            padding: 8px;
+        }
+    }
+    
+}
+
+
+/* PC */
+@media (min-width: 769px) {
+  /* Header
+  ------------------------------------------------------------*/
+  header {
+      height: 500px;
+  }
+  
+  /* main
+  ------------------------------------------------------------*/  
+    main {
+        .main-boxes{
+            @include flex-direction(row);    /* 横並び */
+            justify-content: space-between;
+            
+            .main-box {
+                margin: 0 10px;  
+            }
+        }
+    }
+    
+  /* footer
+  ------------------------------------------------------------*/   
+    footer {
+        .button-roundedRectangle {
+            &:hover {
+                background-color: darken($keyColor, 10%);
+            }
+        }
+    }
+}
